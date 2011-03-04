@@ -3,7 +3,7 @@
 # $1 = rundate
 
 if [ $# -ne 2 ]; then
-    echo "Usage: pipeline.sh rundate your_username";
+    echo "Usage: $0 rundate your_username";
     echo "rundate format: YYYYMMDD"
     exit 1;
 fi

@@ -3,7 +3,7 @@
 # $1 = rundate
 
 if [ $# -ne 1 ]; then
-    echo "Usage: lost_key_mysql.sh rundate";
+    echo "Usage: $0 rundate";
     echo "rundate format: YYYYMMDD"
     exit 1;
 fi

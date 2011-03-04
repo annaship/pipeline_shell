@@ -4,7 +4,7 @@
 # $2 = h_region
 
 if [ $# -ne 2 ]; then
-    echo "Usage: mysql_count.sh rundate hypervariable_region_sequenced";
+    echo "Usage: $0 rundate hypervariable_region_sequenced";
     echo "rundate format: YYYYMMDD";
     echo "hypervariable_region_sequenced example: v6v4";
     exit 1;

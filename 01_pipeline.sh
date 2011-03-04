@@ -5,7 +5,7 @@
 # $3 = SFF file name
 
 if [ $# -ne 3 ]; then
-    echo "Usage: pipeline.sh rundate CSV_file_name SFF_file_name";
+    echo "Usage: $0 rundate CSV_file_name SFF_file_name";
     echo "rundate format: YYYYMMDD"
     exit 1;
 fi

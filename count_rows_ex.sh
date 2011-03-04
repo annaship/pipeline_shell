@@ -3,7 +3,7 @@
 
 # require one argument on the command line
 if [ $# -ne 1 ]; then
-    echo "Usage: count_rows.sh tbl_name";
+    echo "Usage: $0 tbl_name";
     exit 1;
 fi
 
