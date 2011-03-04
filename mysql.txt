@@ -1,0 +1,41 @@
+CREATE TABLE test1 (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	 CHAR(24),
+	model CHAR(32),
+	text CHAR(128),
+);
+
+CREATE TABLE test1 (
+read_id	char(14)	NOT NULL	PRIMARY KEY
+run_key	varchar(12)	NOT NULL,
+deleted	tinyint(1) unsigned	NOT NULL,
+delete_reason	varchar(50)	NOT NULL,
+prox_primer	varchar(16)	NOT NULL,
+orientation	char(1)	NOT NULL,
+distal_primer	varchar(5),
+countN	tinyint(3) unsigned	NOT NULL,
+length	smallint(9) unsigned	NOT NULL,
+sequence	text	NOT NULL,
+run	varchar(16)	NOT NULL,
+dataset	varchar(64)	NOT NULL,
+project	varchar(5)	NOT NULL,
+source	varchar(16)	NOT NULL,
+date_trimmed	date	NOT NULL
+);
+
+
+read_id	char(14)	NO	PRI	
+run_key	varchar(12)	NO	MUL	
+deleted	tinyint(1) unsigned	NO	MUL	
+delete_reason	varchar(50)	NO	MUL	
+prox_primer	varchar(16)	NO	MUL	0
+orientation	char(1)	NO		
+distal_primer	varchar(50)	YES	MUL	
+countN	tinyint(3) unsigned	NO		0
+length	smallint(9) unsigned	NO		0
+sequence	text	NO	MUL	
+run	varchar(16)	NO	MUL	0
+dataset	varchar(64)	NO	MUL	
+project	varchar(50)	NO	MUL	
+source	varchar(16)	NO	MUL	
+date_trimmed	date	NO
