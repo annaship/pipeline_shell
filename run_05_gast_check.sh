@@ -17,6 +17,7 @@ dir_name="$1_$2"
 table_name="gast_$1_$2"
 
 # 1)
+echo "The number of reads in the gast_run table that were loaded:"
 mysql -h jbpcdb.mbl.edu env454 -e "SELECT COUNT(distinct read_id) FROM $table_name" 
 
 # 2)
@@ -31,10 +32,10 @@ echo "The answer is $equal"
 
 if [ $equal = 'yes' ]
 then
-  run_06_gast_check2.sh $rundate $h_region
+  run_06_01_gast_check2.sh $rundate $h_region
 elif [ $equal = 'no' ]
-  # not equal the number of reads in the gast_run table, then you will need to manually load the remaining data
 then
+  echo "Not equal the number of reads in the gast_run table that were loaded - you will need to load the remaining data"
   # cd g454/gast/20100929_v6v4
   cd g454/gast/$dir_name
   for i in $table_name.*.txt; 

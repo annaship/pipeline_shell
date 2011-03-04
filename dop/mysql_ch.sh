@@ -13,11 +13,14 @@ fi
 # variables:
 rundate="$1"
 h_region="$2"
-db="development_db"
+user=`whoami`
 host="localhost"
+db="development_db"
+# host="jbpcdb.mbl.edu"
+# db="env454"
 sql="SELECT COUNT(DISTINCT sequence) FROM test1 WHERE deleted=0 AND run=\"$rundate\" AND source=\"$h_region\""
 
-/usr/local/mysql/bin/mysql -u -h "$host" -p <<EOF
+/usr/local/mysql/bin/mysql -u "$user" -h "$host" -p <<EOF
   use $db;
   $sql;
 EOF

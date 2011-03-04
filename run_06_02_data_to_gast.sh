@@ -13,14 +13,8 @@ fi
 # variables:
 rundate="$1"
 h_region="$2"
-user=`whoami`
-host="jbpcdb.mbl.edu"
-db="env454"
+dir_name="$1_$2"
+table_name="gast_$1_$2"
 
-sql="SELECT COUNT(DISTINCT sequence) FROM test1 WHERE deleted=0 AND run=\"$rundate\" AND source=\"$h_region\""
-
-mysql -u "$user" -h "$host" -p <<EOF
-  use $db;
-  $sql;
-EOF
-
+cd g454/gast/$dir_name
+gast_cleanup -r $rundate -reg $h_region &

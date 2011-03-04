@@ -11,6 +11,3 @@ chmod 664 *.csv
 
 dos2unix *.csv
 mac2unix *.csv
-
-# 3) validation
-#  Andy's script + 4,5,5b from pipline wiki
