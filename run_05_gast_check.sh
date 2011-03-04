@@ -31,7 +31,7 @@ echo "The answer is $equal"
 
 if [ $equal = 'yes' ]
 then
-  06_gast_check2.sh
+  run_06_gast_check2.sh $rundate $h_region
 elif [ $equal = 'no' ]
   # not equal the number of reads in the gast_run table, then you will need to manually load the remaining data
 then
@@ -40,7 +40,7 @@ then
   for i in $table_name.*.txt; 
     do mysqlimport -i -C -v -L -h jbpcdb env454 $i; 
   done; 
-  05_gast_check.sh
+  $0 $rundate $h_region
 else
   echo "Is the last number equal the number of reads in the gast_run table? (yes, no)"
 fi

@@ -13,8 +13,7 @@ fi
 # variables:
 rundate="$1"
 h_region="$2"
-dir_name="$1_$2"
-table_name="gast_$1_$2"
+ref_name="refhvr_$2"
 
 # 7.  Log back onto the cluster.   Assign taxonomy to each read with gast2tax which stores data the tagtax table.
 #     Use defaults for the output table, boot scores and majority.
@@ -24,14 +23,28 @@ table_name="gast_$1_$2"
 #     Usage:  clusterize gast2tax -g gastTable -reg referenceRegionTable -ref refhvrTable
 #      
 #     clusterize gast2tax -g gast_20100929_v6v4 -reg v6v4 -ref  refhvr_v4v6 
+  clusterize gast2tax -g $table_name -reg $h_region -ref $ref_name 
 #   
-#     To verify, query tagtax.  The count should match the sum of the counts from step 6 above, e.g. count of reads in gast tables from all regions.
-#     
+#     To verify, query tagtax.  The count should match:
+  gast_check $rundate h_region
+    
+  $sql1 = "
+    select count(*) 
+      from tagtax as x join trimseq as t using(read_id) 
+      where run=\"$rundate\" and deleted=0        
+    "
 #     select count(*) 
 #     from tagtax as x join trimseq as t using(read_id) 
-#     where run='20100929' and deleted=0
-#  
-#     select taxonomy, count(*) from 
-#     tagtax as x join trimseq as t using(read_id)
-#     where run=20100929
-#     group by taxonomy
+#     where run=\"20100929\" and deleted=0
+
+  $sql2 = "
+    select taxonomy, count(*) from 
+      tagtax as x join trimseq as t using(read_id)
+      where run=\"$rundate\"
+      group by taxonomy
+  "
+
+    # select taxonomy, count(*) from 
+    # tagtax as x join trimseq as t using(read_id)
+    # where run=20100929
+    # group by taxonomy

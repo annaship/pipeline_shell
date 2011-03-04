@@ -13,13 +13,14 @@ fi
 # variables:
 rundate="$1"
 h_region="$2"
+user=`whoami`
+# TODO remove/change local vars
 db="development_db"
 host="localhost"
-user=`whoami`
-echo "username = $user"
+
 sql="SELECT COUNT(DISTINCT sequence) FROM test1 WHERE deleted=0 AND run=\"$rundate\" AND source=\"$h_region\""
 
-/usr/local/mysql/bin/mysql -u "$user" -h "$host" -p <<EOF
+mysql -u "$user" -h "$host" -p <<EOF
   use $db;
   $sql;
 EOF

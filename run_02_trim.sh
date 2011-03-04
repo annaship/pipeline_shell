@@ -3,7 +3,7 @@
 # $1 = rundate
 
 if [ $# -ne 2 ]; then
-    echo "Usage: $0 rundate your_username";
+    echo "Usage: $0 rundate";
     echo "rundate format: YYYYMMDD"
     exit 1;
 fi
@@ -16,7 +16,6 @@ username=`whoami`
 #  1.  Log on to the cluster (grendel).
 #       
 #        From the run directory submit clustertrim to the cluster and run:
-#        noclustertrim -r rundate
        noclustertrim -r $rundate
 #        
 #       You can check for when your processes have completed on the cluster:
@@ -54,7 +53,7 @@ echo "
    	      
    	       If  biggest delete_reason is 'key' then the regions may be confused run:
    	       
-   	       $ lost_key_mysql.sh rundate
+   	       $ run_03_lost_key_mysql.sh rundate
    	      
    	       This query shows the results for all keys.  Useful for finding lost keys, i.e. if no data 
    	       was recovered for a particular key:
